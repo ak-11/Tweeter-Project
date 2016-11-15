@@ -1,0 +1,35 @@
+#nav-bar {
+  position: fixed;
+  height: 80px;
+  background-color: #00a087;
+  color: #e8fdff;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: 100%;
+}
+
+/*.float-logo-and-header {
+  float: left;
+  padding: 10px;
+  box-sizing: content-box;
+}
+*/
+/*Instead please namespace them within #nav-bar by prefixing them like so*/
+
+#nav-bar .header {
+  font-size: 200%;
+  line-height: 175%;
+  float: left;
+  padding: 10px;
+  box-sizing: content-box;
+}
+
+#nav-bar .logo {
+  height: 80px;
+  width: 80px;
+  float: left;
+  padding: 10px;
+  box-sizing: content-box;*/
+}
