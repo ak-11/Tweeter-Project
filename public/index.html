@@ -16,6 +16,9 @@
     <!-- Navigation Bar CSS file -->
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
+    <!-- Tweet Input Form/Box Style Sheet - Syntax Was Auto Completed BVy Sublime-->
+    <link rel="stylesheet" type="text/css" href="/styles/new-tweet.css" />
+
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
@@ -33,6 +36,14 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+    <section class="new-tweet">
+      <h2>Compose Tweet</h2>
+      <form action="/tweets" method="POST">
+        <textarea name="text" placeholder="What are you humming about?"></textarea>
+        <input type="submit" value="Tweet"/>
+        <span class="counter">140</span>
+      </form>
+    </section>
       <div align="center"><b>LOTS OF WORDS words WoRdS</b></div>
       <div align="center">Chillwave coloring book enim, yuccie magna affogato pickled humblebrag gastropub tempor. Church-key laborum microdosing irure drinking vinegar, single-origin coffee YOLO hell of qui skateboard paleo elit la croix cornhole photo booth. Anim hashtag you probably haven't heard of them gentrify mollit.
       </div>
