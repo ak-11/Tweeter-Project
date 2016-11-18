@@ -5,16 +5,19 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
-  let $tweet = $("<article>").addClass("tweet")
+const escape = function(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 
 const createTweetElement = function(tweetData) {
-  let userName = tweetData.user.name;
-  let avatar = tweetData.user.avatars.regular;
-  let handle = tweetData.user.handle;
-  let content = tweetData.content.text;
-  let postDate = tweetData.created_at;
-  let $html = `<article>
+  const userName = escape(tweetData.user.name);
+  const avatar = escape(tweetData.user.avatars.regular);
+  const handle = escape(tweetData.user.handle);
+  const content = escape(tweetData.content.text);
+  const postDate = tweetData.created_at;
+  const $html = `<article>
                 <header>
                   <img src=${avatar} alt="avatar photo">
                   <h2>${userName}</h2>
@@ -31,6 +34,32 @@ const createTweetElement = function(tweetData) {
               </article>`
   return $html;
 };
+
+let data = []
+
+const renderTweets = function(tweets) {
+  tweets.forEach(function(tweet) {
+    $(".saved-tweets").append(createTweetElement(tweet));
+  })
+};
+
+$(document).ready(function() {
+  let tweetForm = $("#compose-new-tweet");
+
+  tweetForm.on("submit", (event) => {
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: tweetForm.serialize(),
+      }).done(function(result) {
+        renderTweets(result);
+      })
+  })
+});
+
+
+
     // $(".saved-tweets").append($html);
 // Fake data taken from tweets.json
 // var data = [
@@ -79,13 +108,40 @@ const createTweetElement = function(tweetData) {
 //     "created_at": 1461113796368
 //   }
 // ];
-let data = []
+//Original Code that Worked
+//  let $tweet = $("<article>").addClass("tweet")
 
-const renderTweets = function(tweets) {
-  tweets.forEach(function(tweet) {
-    $(".saved-tweets").append(createTweetElement(tweet));
-  })
-}
-$(document).ready(function() {
-  renderTweets(data);
-});
+// const createTweetElement = function(tweetData) {
+//   let userName = tweetData.user.name;
+//   let avatar = tweetData.user.avatars.regular;
+//   let handle = tweetData.user.handle;
+//   let content = tweetData.content.text;
+//   let postDate = tweetData.created_at;
+//   let $html = `<article>
+//                 <header>
+//                   <img src=${avatar} alt="avatar photo">
+//                   <h2>${userName}</h2>
+//                   <h5>${handle}</h5>
+//                 </header>
+//                 <p>${content}</p>
+//                 <footer>
+//                 <div>${postDate}
+//                   <i class="fa fa-flag" aria-hidden="true"></i>
+//                   <i class="fa fa-retweet" aria-hidden="true"></i>
+//                   <i class="fa fa-heart" aria-hidden="true"></i>
+//                 </div>
+//                 </footer>
+//               </article>`
+//   return $html;
+// };
+
+// let data = []
+
+// const renderTweets = function(tweets) {
+//   tweets.forEach(function(tweet) {
+//     $(".saved-tweets").append(createTweetElement(tweet));
+//   })
+// }
+// $(document).ready(function() {
+//   renderTweets(data);
+// });
