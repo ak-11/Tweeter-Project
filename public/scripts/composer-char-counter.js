@@ -1,3 +1,4 @@
+"use strict";
 
 $(document).ready(function() {
   $("#compose-tweet").on("keyup", function(event) {
