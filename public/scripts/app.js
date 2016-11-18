@@ -5,11 +5,12 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
 const escape = function(str) {
   var div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
-}
+};
 
 const createTweetElement = function(tweetData) {
   const userName = escape(tweetData.user.name);
@@ -35,11 +36,12 @@ const createTweetElement = function(tweetData) {
   return $html;
 };
 
-let data = []
+let data = [];
 
 const renderTweets = function(tweets) {
-  tweets.forEach(function(tweet) {
-    $(".saved-tweets").append(createTweetElement(tweet));
+  $(".saved-tweets").empty();
+  $.each(tweets, function(i, tweet) {
+    $(".saved-tweets").prepend(createTweetElement(tweet));
   })
 };
 
@@ -48,14 +50,31 @@ $(document).ready(function() {
 
   tweetForm.on("submit", (event) => {
     event.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: tweetForm.serialize(),
-      }).done(function(result) {
-        renderTweets(result);
+    const tweetContent = $(this).find("textarea").val();
+    if (tweetContent === "") {
+      alert("It looks like you forgot to type a tweet");
+    } else if (tweetContent.length > 140) {
+      alert("You tried to type too many words!");
+    } else {
+      $.ajax({
+        type: "POST",
+        url: "/tweets",
+        data: tweetForm.serialize(),
+        }).done(function(result) {
+          loadTweets(result);
+          tweetForm.find("textarea").val("");
       })
+    }
   })
+
+  const loadTweets = function() {
+    $.ajax({
+      url: "/tweets",
+      method: "GET",
+      success: renderTweets
+    });
+  };
+  loadTweets();
 });
 
 

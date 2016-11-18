@@ -87,4 +87,4 @@ jspm_packages
 # Yarn Integrity file
 .yarn-integrity
 
-?jQueryAPI-version-of-app.js-code.js
+jQueryAPI-version-of-app.js-code.js

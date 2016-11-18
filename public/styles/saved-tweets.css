@@ -71,6 +71,7 @@ line-height: 0;
   bottom: 75px;
   font-size: xx-large;
   font-weight: bolder;
+  word-wrap: break-word;;
 }
 
 .saved-tweets h5 {

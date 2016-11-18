@@ -27,3 +27,23 @@
   padding: 10px;
   box-sizing: content-box;
 }
+
+#nav-bar .tweet-compose-button {
+ float: right;
+ border: 1px solid black;
+ margin-top: 5px;
+ padding: 23px;
+ border-radius: 10%;
+ background-color: #E0FFFF;
+}
+
+#nav-bar #tweet-compose-button {
+  color: #00a087;
+}
+
+#nav-bar .tweet-compose-button:hover {
+  background-color: white;
+}
+
+#nav-bar .tweet-compose-button:hover #tweet-compose-button {
+  color: black;

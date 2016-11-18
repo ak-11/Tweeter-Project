@@ -9,6 +9,7 @@
   border-radius: 5px;
   position: relative;
   background-color: #ecf0f1;
+  display: none;
 }
 
 .new-tweet h2 {
