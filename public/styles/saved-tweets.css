@@ -11,7 +11,6 @@
   margin-bottom: 10px;
 }
 
-
 .saved-tweets header {
   background-color: #ecf0f1;
   margin: 0;
@@ -50,7 +49,7 @@
 
 .saved-tweets header {
   opacity: 0.5;
-line-height: 0;
+  height: 100px;
 }
 
 .saved-tweets article:hover header {
@@ -69,7 +68,7 @@ line-height: 0;
   position: relative;
   left: 100px;
   bottom: 75px;
-  font-size: xx-large;
+  font-size: x-large;
   font-weight: bolder;
   word-wrap: break-word;;
 }
