@@ -17,7 +17,13 @@ const dateConversion = function (postDate) {
   let millisecondsInDay = 86400000;
   let difference = (today - postDate)/millisecondsInDay;
   let result = Math.floor(difference);
-  return (`${result} days ago`);
+  if (result < 1) {
+    return (`Today`)
+  } else if (result === 1) {
+    return (`${result} day ago`);
+  } else {
+    return (`${result} days ago`);
+  }
 };
 
 const createTweetElement = function(tweetData) {

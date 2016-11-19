@@ -21,6 +21,7 @@
   word-wrap: break-word;
   background-color: #FFF;
   padding: 0 10px;
+  height: 70px;
 }
 
 .saved-tweets footer {
@@ -69,8 +70,9 @@
   left: 100px;
   bottom: 75px;
   font-size: x-large;
-  font-weight: bolder;
-  word-wrap: break-word;;
+  line-height: 10px;
+  margin-right: 190px;
+  line-height: 1;
 }
 
 .saved-tweets h5 {
