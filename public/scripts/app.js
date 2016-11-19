@@ -48,12 +48,11 @@ let data = [];
 
 const renderTweets = function(tweets) {
   $(".saved-tweets").empty();
-  // $ sort function here
-  // tweets.sort(function(x, y) {
-  //   return tweetData.created_at - tweetData.created_at;
-  // })
+  tweets.sort(function(x, y) {
+    return y.created_at - x.created_at;
+  })
   $.each(tweets, function(i, tweet) {
-    $(".saved-tweets").prepend(createTweetElement(tweet));
+    $(".saved-tweets").append(createTweetElement(tweet));
   })
 };
 
