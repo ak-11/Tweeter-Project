@@ -74,4 +74,5 @@
 .saved-tweets h5 {
   font-weight: lighter;
   align-self: flex-end;
+  line-height: 4;
 }
